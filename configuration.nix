@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -36,7 +37,7 @@
     home = "/home/user";
     description = "Non-root default user";
     extraGroups = [ "wheel" "networkmanager" ];
-    openssh.authorizedKeys.keys =  [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBwxMMvXmcV91sgDwLTO+la5zKsMAKPkFSPKyqBaiGUT igna@waterfall" ];
+    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBwxMMvXmcV91sgDwLTO+la5zKsMAKPkFSPKyqBaiGUT igna@waterfall" ];
   };
 
   # List packages installed in system profile. To search, run:
