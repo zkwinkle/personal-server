@@ -9,8 +9,9 @@ to host my [website](https://github.com/zkwinkle/website-server).
 git clone --recurse-submodules https://github.com/zkwinkle/website-server.git
 ```
 
-## Updating website
-
+## Loading configuration remotely
 ```sh
-cd website && git pull
+nixos-rebuild --flake .#website-server \
+  --target-host mymachine-hostname --build-host mymachine-hostname --fast \
+  switch
 ```

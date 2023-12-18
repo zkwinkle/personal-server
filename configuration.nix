@@ -14,11 +14,14 @@
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
 
-  networking.hostName = "nixos";
+  networking.hostName = "website-server";
   networking.useDHCP = false;
   networking.interfaces.eth0.useDHCP = true;
 
   time.timeZone = "America/Costa_Rica";
+
+  # Allow flakes permanently
+	nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
