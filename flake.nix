@@ -1,9 +1,16 @@
 {
-  outputs = { self, nixpkgs }: {
-    nixosConfigurations.website-server = nixpkgs.lib.nixosSystem {
+  outputs = { self, nixpkgs }:
+    let
       system = "x86_64-linux";
-      modules = [ ./configuration.nix ];
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [ (import ./overlay.nix) ];
+      };
+    in
+    {
+      nixosConfigurations.website-server = nixpkgs.lib.nixosSystem {
+        inherit pkgs system;
+        modules = [ ./configuration ];
+      };
     };
-  };
 }
-
