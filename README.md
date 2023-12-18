@@ -9,8 +9,8 @@ to host my [website](https://github.com/zkwinkle/website-server).
 git clone --recurse-submodules https://github.com/zkwinkle/website-server.git
 ```
 
-## Loading configuration remotely
+## Install configuration remotely
 
 ```sh
-nixos-rebuild switch --flake github:zkwinkle/website-server
+nixos-rebuild switch --flake 'git+https:github.com/zkwinkle/website-server?submodules=1#website-server --no-write-lock-file'
 ```
