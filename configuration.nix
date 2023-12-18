@@ -14,26 +14,10 @@
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
 
-  networking.hostName = "website-server";
-  networking.useDHCP = false;
-  networking.interfaces.eth0.useDHCP = true;
-
   time.timeZone = "America/Costa_Rica";
 
   # Allow flakes permanently
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  #   useXkbConfig = true; # use xkb.options in tty.
-  # };
 
   users.users.user = {
     isNormalUser = true;
@@ -43,8 +27,6 @@
     openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBwxMMvXmcV91sgDwLTO+la5zKsMAKPkFSPKyqBaiGUT igna@waterfall" ];
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim
     git
@@ -54,25 +36,22 @@
     (callPackage ./website { })
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  networking = {
+    usePredictableInterfaceNames = false;
+    firewall.allowedTCPPorts = [ 22 31415 ]; # SSH & website
+    hostName = "website-server";
+    useDHCP = false;
+    interfaces.eth0.useDHCP = true;
+  # Configure network proxy if necessary
+  # networking.proxy.default = "http://user:password@proxy:port/";
+  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  };
 
   # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;
     settings.PermitRootLogin = "no";
   };
-
-  networking.usePredictableInterfaceNames = false;
-
-  # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 22 31415 ]; # SSH & website
-  # networking.firewall.allowedUDPPorts = [ ... ];
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
