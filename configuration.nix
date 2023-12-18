@@ -21,7 +21,7 @@
   time.timeZone = "America/Costa_Rica";
 
   # Allow flakes permanently
-	nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -47,10 +47,11 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim
+    git
     inetutils
     mtr
     sysstat
-		(callPackage ./website { })
+    (callPackage ./website { })
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
