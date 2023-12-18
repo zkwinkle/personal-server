@@ -10,8 +10,7 @@ git clone --recurse-submodules https://github.com/zkwinkle/website-server.git
 ```
 
 ## Loading configuration remotely
+
 ```sh
-nixos-rebuild --flake .#website-server \
-  --target-host mymachine-hostname --build-host mymachine-hostname --fast \
-  switch
+nixos-rebuild switch --flake github:zkwinkle/website-server
 ```
