@@ -3,13 +3,14 @@
 
     networking = {
       usePredictableInterfaceNames = false;
-      firewall.allowedTCPPorts = [ 22 31415 ]; # SSH & website
+      firewall.allowedTCPPorts = [
+        80 # http
+        443 # https
+        22 # SSH
+      ];
       hostName = "website-server";
       useDHCP = false;
       interfaces.eth0.useDHCP = true;
-      # Configure network proxy if necessary
-      # networking.proxy.default = "http://user:password@proxy:port/";
-      # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
     };
 
     # Enable the OpenSSH daemon.
@@ -18,6 +19,22 @@
       settings = {
         PermitRootLogin = "no";
         PasswordAuthentication = false;
+      };
+    };
+
+    services.nginx = {
+      enable = true;
+
+      recommendedGzipSettings = true;
+      recommendedProxySettings = true;
+      recommendedTlsSettings = true;
+      recommendedOptimisation = true;
+
+      virtualHosts."zkwinkle.is-a.dev" = {
+        locations."/" = {
+          proxyPass = "http://0.0.0.0:31415";
+          proxyWebsockets = true;
+        };
       };
     };
 
