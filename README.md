@@ -29,3 +29,42 @@ curl https://raw.githubusercontent.com/zkwinkle/website-server/main/update-websi
 ```
 
 Piping the script into bash doesn't work (IDK why).
+
+## SSH Setup
+
+SSH password login is disabled, so a public key authentication is required.
+
+Either use an existing key or create a new one:
+
+```sh
+ssh-keygen 0t ed25519 -a 100 -f ~/.ssh/website-server
+```
+
+Then add the public key to the user's authorized keys list in `configuration.nix`.
+
+To connect you'll need to specify which file to use
+```sh
+ssh -i ~/.ssh/website-server user@198.74.54.85
+```
+
+To make the SSH client automatically use the key file, we add this to `/home/<user>/.ssh/config`:
+
+```
+Host website-server
+  HostName 198.74.54.85
+  User user
+
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh/website-server
+```
+
+With this just running `ssh website-server` should let you through.
+
+## Deploy
+
+With the system and ssh config up and running the following command will update
+the OS and pull in any new changes to the website:
+
+```sh
+ssh website-server -t update-website
+```
