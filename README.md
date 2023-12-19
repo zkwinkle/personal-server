@@ -27,12 +27,10 @@ sudo nixos-rebuild switch --flake '.#website-server'
 Or use the `install.sh` script which automates this process and automatically
 cleans up the downloaded git repos.
 
-Here's how to call it remotely with one `nix-shell` command. Just copy paste
-this in the NixOS instance.
+Here's how to bootstrap it in any NixOS instance.
 ```sh
-nix-shell -p curl mktemp --run '
-    SCRIPT=$(mktemp);
-    curl https://raw.githubusercontent.com/zkwinkle/website-server/main/install.sh > "$SCRIPT" && chmod +x "$SCRIPT" && "$SCRIPT";
-    rm "$SCRIPT"
-'
+# OUTDATED, WILL FIX NEXT COMMIT
+nix-shell -p curl --run 'curl https://raw.githubusercontent.com/zkwinkle/website-server/main/install.sh > install.sh'
+chmod +x install.sh
+./install.sh
 ```

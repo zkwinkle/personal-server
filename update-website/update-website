@@ -1,10 +1,10 @@
-#! /usr/bin/env nix-shell
-#! nix-shell -i bash
-#! nix-shell -p bash git mktemp
+#!/usr/bin/env bash
 
 TMPDIR=$(mktemp -d)
 trap "rm -rf \"$TMPDIR\"" EXIT
 
 git clone https://github.com/zkwinkle/website-server.git "$TMPDIR"
+rm -rf "${TMPDIR}/.git"
 git clone https://github.com/zkwinkle/website.git "${TMPDIR}/website"
+rm -rf "${TMPDIR}/website/.git"
 sudo nixos-rebuild switch --flake "${TMPDIR}#website-server"
