@@ -6,7 +6,7 @@
 
     loader = {
       grub = {
-				enable = true;
+        enable = true;
         extraConfig = ''
           serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1;
           terminal_input serial;
