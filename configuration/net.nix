@@ -31,6 +31,9 @@
       recommendedOptimisation = true;
 
       virtualHosts."zkwinkle.is-a.dev" = {
+        listenAddresses = [
+					"zkwinkle.is-a.dev"
+        ];
         locations."/" = {
           proxyPass = "http://0.0.0.0:31415";
           proxyWebsockets = true;
