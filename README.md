@@ -11,26 +11,21 @@ repo (so I don't have to constantly update the hash to reflect new changes).
 (Also yes this is impure but IDC about having a pure build of my website, I
 care more about easily updating.)
 
-### Manual setup
-
-To setup manually one would run:
-
-```sh
-git clone https://github.com/zkwinkle/website-server.git
-cd website-server
-git clone https://github.com/zkwinkle/website.git
-sudo nixos-rebuild switch --flake '.#website-server'
-```
-
 ### Install script setup
 
-Or use the `install.sh` script which automates this process and automatically
-cleans up the downloaded git repos.
+Use the `update-website` command which automates cloning both repos together and
+cleaning them up afterwards. It's included in the distribution.
+
+### Bootstrap
 
 Here's how to bootstrap it in any NixOS instance.
 ```sh
-# OUTDATED, WILL FIX NEXT COMMIT
-nix-shell -p curl --run 'curl https://raw.githubusercontent.com/zkwinkle/website-server/main/install.sh > install.sh'
-chmod +x install.sh
-./install.sh
+nix-shell -p curl bash git mktemp
 ```
+And then in the nix-shell:
+```sh
+curl https://raw.githubusercontent.com/zkwinkle/website-server/main/update-website/update-website > bootstrap.sh
+./bootstrap.sh
+```
+
+Piping the script into bash doesn't work (IDK why).

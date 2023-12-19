@@ -1,8 +1,8 @@
-{ stdenv, bash, git, mktemp, sudo }:
+{ stdenv, bash, git, mktemp }:
 stdenv.mkDerivation {
   name = "update-website";
   src = ./.;
-  buildInputs = [ bash git mktemp sudo ];
+  buildInputs = [ bash git mktemp ];
   installPhase = ''
     mkdir -p $out/bin
     cp update-website $out/bin

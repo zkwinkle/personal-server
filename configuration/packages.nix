@@ -7,6 +7,7 @@
       mtr
       sysstat
       website
+      update-website
     ];
   };
 }
