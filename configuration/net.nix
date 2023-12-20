@@ -31,21 +31,19 @@
       recommendedOptimisation = true;
 
       virtualHosts."zkwinkle.is-a.dev" = {
-        listen = [
-          {
-            addr = "zkwinkle.is-a.dev";
-            port = 443;
-          }
-          {
-            addr = "zkwinkle.is-a.dev";
-            port = 80;
-          }
-        ];
+        forceSSL = true;
+        enableACME = true;
+        root = "/var/www/zkwinkle.is-a.dev";
         locations."/" = {
           proxyPass = "http://0.0.0.0:31415";
           proxyWebsockets = true;
         };
       };
+    };
+
+    security.acme = {
+      acceptTerms = true;
+      defaults.email = "ignaevc@gmail.com";
     };
 
     systemd.services.website = {
