@@ -1,6 +1,6 @@
 # NixOS server for my [website](https://github.com/zkwinkle/website)
 
-My personal reproducible NixOS server to host my [website](https://github.com/zkwinkle/website).
+My personal reproducible NixOS server.
 
 ## Setup
 
@@ -19,12 +19,14 @@ cleaning them up afterwards. It's included in the distribution.
 ### Bootstrap
 
 Here's how to bootstrap it in any NixOS instance.
+First, create a nix-shell with the required packages:
 ```sh
 nix-shell -p curl bash git mktemp
 ```
-And then in the nix-shell:
+And then in the nix-shell run the following commands:
 ```sh
 curl https://raw.githubusercontent.com/zkwinkle/website-server/main/update-website/update-website > bootstrap.sh
+# Although omitted, highly recommend to inspect the script's contents
 ./bootstrap.sh
 ```
 
