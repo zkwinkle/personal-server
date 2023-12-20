@@ -31,8 +31,15 @@
       recommendedOptimisation = true;
 
       virtualHosts."zkwinkle.is-a.dev" = {
-        listenAddresses = [
-					"zkwinkle.is-a.dev"
+        listen = [
+          {
+            addr = "zkwinkle.is-a.dev";
+            port = 443;
+          }
+          {
+            addr = "zkwinkle.is-a.dev";
+            port = 80;
+          }
         ];
         locations."/" = {
           proxyPass = "http://0.0.0.0:31415";
