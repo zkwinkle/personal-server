@@ -39,7 +39,7 @@ SSH password login is disabled, so a public key authentication is required.
 Either use an existing key or create a new one:
 
 ```sh
-ssh-keygen 0t ed25519 -a 100 -f ~/.ssh/website-server
+ssh-keygen -t ed25519 -a 100 -f ~/.ssh/website-server
 ```
 
 Then add the public key to the user's authorized keys list in `configuration.nix`.
