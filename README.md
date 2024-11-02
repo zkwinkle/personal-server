@@ -1,6 +1,10 @@
-# NixOS server for my [website](https://github.com/zkwinkle/website)
+# NixOS personal server
 
-My personal reproducible NixOS server.
+My personal reproducible NixOS server, for my own tinkering.
+
+Currently hosting:
+- [my personal website](https://github.com/zkwinkle/website)
+
 
 ## Setup
 
