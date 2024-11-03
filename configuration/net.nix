@@ -8,7 +8,7 @@
         443 # https
         22 # SSH
       ];
-      hostName = "website-server";
+      hostName = "personal-server";
       useDHCP = false;
       interfaces.eth0.useDHCP = true;
     };
@@ -55,11 +55,15 @@
       wants = [ "network-online.target" ];
 
       serviceConfig = {
-        ExecStart = "${pkgs.website}/bin/website";
+        ExecStart = "${pkgs.personal-website}/bin/website";
         Type = "simple";
         Restart = "always";
       };
       wantedBy = [ "multi-user.target" ];
+
+      environment = {
+        PUBLIC_DIR = "${pkgs.personal-website}/public";
+      };
     };
   };
 }

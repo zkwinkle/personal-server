@@ -6,8 +6,7 @@
       inetutils
       mtr
       sysstat
-      website
-      update-website
+      personal-website
     ];
   };
 }
