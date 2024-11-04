@@ -197,11 +197,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1730670791,
-        "narHash": "sha256-wDyY0fnw3JXatzJAC2CnvZzB+f3wr7K3HCG7/C9aRaE=",
+        "lastModified": 1730687340,
+        "narHash": "sha256-r7VW/7C/v/NzFjKc44uKPr71htXBCIM1CL0CUzb2SVM=",
         "owner": "zkwinkle",
         "repo": "uwgpu",
-        "rev": "0fc86170642ba57c6d1ffa80f39a93e28ef0133a",
+        "rev": "348f61fceac895a2db73be033de0ddfadfbd0b61",
         "type": "github"
       },
       "original": {
