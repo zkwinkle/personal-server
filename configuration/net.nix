@@ -80,13 +80,12 @@
           ensureDBOwnership = true;
         }
       ];
+      enableTCPIP = true;
       authentication = ''
-        # TYPE  DATABASE  USER  ADDRESS   METHOD
-        local   uwgpu     uwgpu           peer
-      '';
-      identMap = ''
-        # ArbitraryMapName systemUser DBUser
-        uwgpu_map      uwgpu      uwgpu
+                # TYPE  DATABASE  USER   ADDRESS        METHOD
+                local   uwgpu     uwgpu                 peer
+        				# ipv4 / ipv6
+        				host    uwgpu     uwgpu  localhost      trust
       '';
     };
 
