@@ -39,7 +39,7 @@
           proxyWebsockets = true;
         };
         locations."/uwgpu/" = {
-          proxyPass = "http://0.0.0.0:31416";
+          proxyPass = "http://0.0.0.0:31416/";
           proxyWebsockets = true;
         };
       };
