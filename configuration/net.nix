@@ -90,26 +90,29 @@
       '';
     };
 
-		# systemd.services.uwgpu-server = {
-    #   enable = true;
-    #   description = "Server for µwgpu website.";
+    systemd.services.uwgpu-server = {
+      enable = true;
+      description = "Server for µwgpu website.";
 
-    #   after = [ "network.target" "network-online.target" "nss-lookup.target" ];
-    #   requires = [ "network.target" ];
-    #   wants = [ "network-online.target" ];
+      after = [ "network.target" "network-online.target" "nss-lookup.target" ];
+      requires = [ "network.target" ];
+      wants = [ "network-online.target" ];
 
-    #   serviceConfig = {
-		# 		ExecStartPre = "sqlx migrate --source ${pkgs.uwgpu-server}/migrations run";
-    #     ExecStart = "${pkgs.uwgpu-server}/bin/web-server";
-    #     Type = "simple";
-    #     Restart = "always";
-    #     RestartSec = 10;
-    #   };
-    #   wantedBy = [ "multi-user.target" ];
+      serviceConfig = {
+        ExecStartPre = "sqlx migrate run --source ${pkgs.uwgpu-server}/migrations";
+        ExecStart = "${pkgs.uwgpu-server}/bin/web-server";
+        Type = "simple";
+        Restart = "always";
+        RestartSec = 10;
+        User = "uwgpu";
+      };
+      wantedBy = [ "multi-user.target" ];
 
-    #   environment = {
-    #     PUBLIC_DIR = "${pkgs.personal-website}/public";
-    #   };
-    # };
+      environment = {
+        PUBLIC_DIR = "${pkgs.personal-website}/public";
+        DATABASE_URL = "postgres://uwgpu@localhost/uwgpu";
+        SERVER_URL = "https://zkwinkle.is-a.dev/uwgpu";
+      };
+    };
   };
 }

@@ -43,3 +43,13 @@ the OS and pull in any new changes from the master branch:
 ```sh
 ssh personal-server -t sudo nixos-rebuild switch --flake "github:zkwinkle/personal-server#personal-server" --refresh
 ```
+
+## DB
+
+There's 1 configured PostgreSQL database, `uwgpu`. It's used by the µwgpu
+server.
+
+To access it:
+```
+sudo -u uwgpu psql -U uwgpu -d uwgpu
+```
