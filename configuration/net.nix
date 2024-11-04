@@ -98,7 +98,7 @@
       wants = [ "network-online.target" ];
 
       serviceConfig = {
-        ExecStartPre = "sqlx migrate run --source ${pkgs.uwgpu-server}/migrations";
+        ExecStartPre = ''${pkgs.sqlx-cli}/bin/sqlx migrate run --source "${pkgs.uwgpu-server}/migrations" --database-url "postgres://uwgpu@localhost/uwgpu"'';
         ExecStart = "${pkgs.uwgpu-server}/bin/web-server";
         Type = "simple";
         Restart = "always";
