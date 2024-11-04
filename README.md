@@ -73,6 +73,15 @@ nix-shell -p '(nixos{}).nixos-rebuild' # get nixos-rebuild in non-nixos system
 nixos-rebuild switch --flake .#personal-server --target-host personal-server-root --use-remote-sudo --refresh
 ```
 
+## Updating packages
+
+To update a package (for example `uwgpu`) use `nix flake update`.
+
+```sh
+nix flake update uwgpu --extra-experimental-features "nix-command flakes"
+# might need to add --refresh
+```
+
 ## DB
 
 There's 1 configured PostgreSQL database, `uwgpu`. It's used by the µwgpu
