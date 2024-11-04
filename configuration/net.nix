@@ -108,7 +108,7 @@
       wantedBy = [ "multi-user.target" ];
 
       environment = {
-        PUBLIC_DIR = "${pkgs.personal-website}/public";
+        PUBLIC_DIR = "${pkgs.uwgpu-server}/public";
         DATABASE_URL = "postgres://uwgpu@localhost/uwgpu";
         SERVER_URL = "https://zkwinkle.is-a.dev/uwgpu";
       };
