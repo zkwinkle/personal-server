@@ -1,10 +1,10 @@
 {
   inputs = {
-    personal-website.url = "github:zkwinkle/website";
+    website.url = "github:zkwinkle/website";
     uwgpu.url = "github:zkwinkle/uwgpu";
   };
 
-  outputs = { self, nixpkgs, personal-website, uwgpu }:
+  outputs = { self, nixpkgs, website, uwgpu }:
   let
   system = "x86_64-linux";
   pkgs = import nixpkgs {
@@ -12,8 +12,8 @@
     overlays = [
       (
         final: prev: {
-          inherit personal-website;
-          uwgpu-server = uwgpu.web-server;
+          uwgpu-server = uwgpu.packages.${prev.system}.web-server;
+          personal-website = website.packages.${prev.system}.default;
         }
       )
     ];
