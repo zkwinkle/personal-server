@@ -5,6 +5,10 @@
   # Allow flakes permanently
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  users.users.root = {
+    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDjNVjF5pfnKk5B/e0mDZYsLyktjzhFvNcbCM03TPwB3 igna@waterfall" ];
+  };
+
   users.users.user = {
     isNormalUser = true;
     home = "/home/user";
