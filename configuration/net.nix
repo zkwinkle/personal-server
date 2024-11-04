@@ -38,6 +38,10 @@
           proxyPass = "http://0.0.0.0:31415";
           proxyWebsockets = true;
         };
+        locations."/uwgpu/" = {
+          proxyPass = "http://0.0.0.0:31416";
+          proxyWebsockets = true;
+        };
       };
     };
 
@@ -53,17 +57,59 @@
       after = [ "network.target" "network-online.target" "nss-lookup.target" ];
       requires = [ "network.target" ];
       wants = [ "network-online.target" ];
+      wantedBy = [ "multi-user.target" ];
 
       serviceConfig = {
         ExecStart = "${pkgs.personal-website}/bin/website";
         Type = "simple";
         Restart = "always";
+        RestartSec = 10;
       };
-      wantedBy = [ "multi-user.target" ];
 
       environment = {
         PUBLIC_DIR = "${pkgs.personal-website}/public";
       };
     };
+
+    services.postgresql = {
+      enable = true;
+      ensureDatabases = [ "uwgpu" ];
+      ensureUsers = [
+        {
+          name = "uwgpu";
+          ensureDBOwnership = true;
+        }
+      ];
+      authentication = ''
+        # TYPE  DATABASE  USER  ADDRESS   METHOD
+        local   uwgpu     uwgpu           peer
+      '';
+      identMap = ''
+        # ArbitraryMapName systemUser DBUser
+        uwgpu_map      uwgpu      uwgpu
+      '';
+    };
+
+		# systemd.services.uwgpu-server = {
+    #   enable = true;
+    #   description = "Server for µwgpu website.";
+
+    #   after = [ "network.target" "network-online.target" "nss-lookup.target" ];
+    #   requires = [ "network.target" ];
+    #   wants = [ "network-online.target" ];
+
+    #   serviceConfig = {
+		# 		ExecStartPre = "sqlx migrate --source ${pkgs.uwgpu-server}/migrations run";
+    #     ExecStart = "${pkgs.uwgpu-server}/bin/web-server";
+    #     Type = "simple";
+    #     Restart = "always";
+    #     RestartSec = 10;
+    #   };
+    #   wantedBy = [ "multi-user.target" ];
+
+    #   environment = {
+    #     PUBLIC_DIR = "${pkgs.personal-website}/public";
+    #   };
+    # };
   };
 }

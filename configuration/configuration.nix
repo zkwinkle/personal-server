@@ -12,4 +12,11 @@
     extraGroups = [ "wheel" "networkmanager" ];
     openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBwxMMvXmcV91sgDwLTO+la5zKsMAKPkFSPKyqBaiGUT igna@waterfall" ];
   };
+
+  users.groups.uwgpu = { };
+  users.users.uwgpu = {
+    isSystemUser = true;
+    description = "User for uwgpu DB";
+    group = "uwgpu";
+  };
 }

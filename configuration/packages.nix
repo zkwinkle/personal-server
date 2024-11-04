@@ -6,7 +6,9 @@
       inetutils
       mtr
       sysstat
+			sqlx-cli
       personal-website
+      uwgpu-server
     ];
   };
 }

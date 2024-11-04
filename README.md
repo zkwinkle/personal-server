@@ -41,5 +41,5 @@ With the system and ssh config up and running the following command will update
 the OS and pull in any new changes from the master branch:
 
 ```sh
-ssh personal-server -t sudo nixos-rebuild switch --flake "github:zkwinkle/personal-server#personal-server"
+ssh personal-server -t sudo nixos-rebuild switch --flake "github:zkwinkle/personal-server#personal-server" --refresh
 ```
