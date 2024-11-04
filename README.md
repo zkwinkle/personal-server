@@ -4,6 +4,7 @@ My personal reproducible NixOS server, for my own tinkering.
 
 Currently hosting:
 - [my personal website](https://github.com/zkwinkle/website)
+- [µwgpu website](https://github.com/zkwinkle)
 
 ## SSH Setup
 
