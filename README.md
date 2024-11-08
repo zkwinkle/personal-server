@@ -74,6 +74,11 @@ nix-shell -p '(nixos{}).nixos-rebuild' # get nixos-rebuild in non-nixos system
 nixos-rebuild switch --flake .#personal-server --target-host personal-server-root --use-remote-sudo --refresh
 ```
 
+one-liner:
+```sh
+nix-shell -p '(nixos{}).nixos-rebuild' --command 'nixos-rebuild switch --flake .#personal-server --target-host personal-server-root --use-remote-sudo'
+```
+
 ## Updating packages
 
 To update a package (for example `uwgpu`) use `nix flake update`.
