@@ -128,11 +128,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1731187926,
-        "narHash": "sha256-qloi/xffWqqDp+wxhhNAqDY7CDc3f/7UW9snIzhYAMA=",
+        "lastModified": 1731622963,
+        "narHash": "sha256-Nv8D0RnX9vVVd7wMPItmcZtJW7xlHdy40b8qss/Izcw=",
         "owner": "zkwinkle",
         "repo": "uwgpu",
-        "rev": "d2e65850eec022479389dc936ea1cf8f608cdd2c",
+        "rev": "816d184bc67da01842b3d284173b5b9b1f0d3cd7",
         "type": "github"
       },
       "original": {
@@ -155,11 +155,11 @@
         "rust-overlay": "rust-overlay_2"
       },
       "locked": {
-        "lastModified": 1730681010,
-        "narHash": "sha256-ZOt58PtdfK9vJbLfdtVkYuGzgwHl0cUb/o2wA5Aut/4=",
+        "lastModified": 1731619261,
+        "narHash": "sha256-t2rlNMZ4jy5xFa0UGjnkfQwuWgJIjjNw8UlBFHn6i1I=",
         "owner": "zkwinkle",
         "repo": "website",
-        "rev": "2d031f7285f13dec06b1fa204e0545bf9f5c47b5",
+        "rev": "1c26846db7ff47849d9ec8d3dccc8bb14fc5eb01",
         "type": "github"
       },
       "original": {
